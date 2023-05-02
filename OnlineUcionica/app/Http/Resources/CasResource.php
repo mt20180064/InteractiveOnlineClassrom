@@ -15,7 +15,7 @@ class CasResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'casId' => $this->resource->id,
+            'id' => $this->resource->id,
             'lekcijaId' => $this->resource->lekcijaId,
             'userId' => $this->resource->userId
         ];

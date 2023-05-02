@@ -36,4 +36,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::resource('casovi', CasController::class)->only(['index', 'show', 'store', 'destroy']);
 Route::resource('users', UserController::class)->only(['index', 'show', 'update']);
-Route::resource('users/{id}/cas', ProductInCartForUserController::class)->only(['index']);
+Route::resource('users/{id}/cas', LekcijaCasUserController::class)->only(['index']);

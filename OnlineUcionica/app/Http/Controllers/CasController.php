@@ -27,7 +27,7 @@ class CasController extends Controller
 
         $cas_item->save();
 
-        return response()->json(['Lekcija je uspesno dodata u cas.', new CasResource($cas_item)]);
+        return response()->json(['Cas je uspesno kreiran.', new CasResource($cas_item)]);
     }
 
 
@@ -44,6 +44,6 @@ class CasController extends Controller
     public function destroy(Cas $cas)
     {
         $cas->delete();
-        return response()->json('Lekcija iz casa je uspesno obrisana.');
+        return response()->json('Cas je obrisan.');
     }
 }
