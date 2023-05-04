@@ -12,6 +12,8 @@ class LekcijaCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
+
+    public static $wrap = 'lekcije';
     public function toArray(Request $request): array
     {
         return parent::toArray($request);

@@ -12,6 +12,7 @@ class PredmetCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
+    public static $wrap = 'predmeti';
     public function toArray(Request $request): array
     {
         return parent::toArray($request);

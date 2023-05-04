@@ -12,6 +12,7 @@ class CasCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
+    public static $wrap = 'casovi';
     public function toArray(Request $request): array
     {
         return parent::toArray($request);
