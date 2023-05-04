@@ -1,0 +1,16 @@
+.all-lectures {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin-left: 50px;
+  }
+
+  .slika {
+    border-radius: 10px;
+    height: 150px;
+    border-style: solid;
+    border-color: white;
+    
+  }
