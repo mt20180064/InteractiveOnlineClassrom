@@ -1,4 +1,7 @@
+import {useNavigate} from 'react-router-dom';
 const JednaLekcija = ({lekcija})=>{
+  let navigate = useNavigate();
+
     return(
      <div className="card">
     <div className="card-header">
@@ -8,8 +11,9 @@ const JednaLekcija = ({lekcija})=>{
       <h5 className="card-title">{lekcija.naziv}</h5>
       <img className='slika' src={lekcija.imageUrl} alt="Lekcija"/>
       <p className="card-text">Trajanje: {lekcija.trajanje} minuta</p>
-      
-      <a href="#"className="btn btn-primary">Dodaj u cas</a>
+      {window.sessionStorage.getItem("auth_token")==null ? <a href="#"className="btn btn-primary">Pocni sa ucenjem</a> :
+      <a href="#"className="btn btn-primary">Izmeni</a>
+    }
     </div>
     <div className="card-footer text-muted">
     {lekcija.predmetId==1?
