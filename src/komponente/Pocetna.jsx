@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 import "../style/pocetna.css";
 import { Link } from 'react-router-dom';
+import PretragaPoPredmetu from './PretragaPoPredmetu'
  {/*const Pocetna = () => {
     const[lekcije, setLekcije] = useState();
     useEffect(() => {
@@ -31,7 +32,7 @@ if (lekcije==null){
  };
 export default Pocetna; */}
 
- const Pocetna = ({lekcija}) => {
+ const Pocetna = ({vidiDetalje,lekcija, obrisi, vidiPredmete}) => {
     const [predmeti, setPredmeti]=useState();
     useEffect(()=>{
         if(predmeti==null){
@@ -67,6 +68,11 @@ export default Pocetna; */}
           });
         setSortirano(lekc);
     }
+
+    
+
+       
+    
     return (
 
        <div>
@@ -79,25 +85,41 @@ export default Pocetna; */}
                 
        <div className='filters-section' >
        
-       <button className="btn btn-primary mb-1" type="button" onClick={sort} style={{backgroundColor:"rgb(33, 37, 41)", marginLeft:20+"px"}}>
+       <button className="btn btn-primary mb-1" type="button" id="ulaz" onClick={sort} style={{backgroundColor:"rgb(33, 37, 41)", marginLeft:20+"px"}}>
            Sortiraj po naslovu
        </button>
-      
+      {window.sessionStorage.getItem("auth_token")==null ? <></> :
            <button className="btn btn-primary mb-1" type="button" style={{backgroundColor:"rgb(33, 37, 41)", marginLeft:20+"px"}}>
                <Link to="/dodajLekciju"  style={{color:"white", textDecoration:"none"}}>
                    Dodaj novu lekciju
                </Link>
            </button>
-           <input type="text" id="ulaz" onkeyup="nadji()" placeholder="Pretraži lekcije po imenu" ></input>
-            <div className="all-lectures">
-          
+    }
+    <button className="btn btn-primary mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapse3" aria-expanded="false" aria-controls="multiCollapse3" style={{backgroundColor:"rgb(33, 37, 41)", marginLeft:20+"px"}}>
+    Pretraga po predmetima
+</button>
+<div className="col" style={{width:270}}>
+    <div className="multi-collapse collapse " id="multiCollapse3" >
+        {predmeti==null ? <></> : predmeti.map((predmet) => (
+            <li  key={predmet.id}>
+                <Link to="/pretragaPoPredmetu" onClick={()=> PretragaPoPredmetu(predmet.id)} style={{background:'transparent', borderWidth:0+"px", color:"black"}} >
+                    {predmet.naziv}
+                </Link>
+            </li> ))}      
+    </div>
+</div>
+           </div>
+
+            <div className="all-lectures" id="tabela">
             <br></br>
+            
                 {lekc == null ? <></> : lekc.map(lekcija=> (
-                    <JednaLekcija lekcija={lekcija} />
+                    <JednaLekcija lekcija={lekcija}  vidiDetalje={vidiDetalje} obrisi={obrisi} />
                 ))}
                 
+                
             </div>
-    </div>
+    
     </div>
     )
 }
