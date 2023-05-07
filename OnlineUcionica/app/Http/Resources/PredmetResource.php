@@ -15,7 +15,7 @@ class PredmetResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'predmetId' => $this->resource->id,
+            'id' => $this->resource->id,
             'naziv' => $this->resource->naziv,
         ];
     }

@@ -12,6 +12,8 @@ class Lekcija extends Model
     protected $table = 'lekcije';
     public $primaryKey = 'id';
 
+
+    protected $fillable = ['naziv', 'trajanje', 'tezina', 'imageUrl', 'predmetId'];
     public function predmet()
     {
         return $this->belongsTo(Predmet::class);

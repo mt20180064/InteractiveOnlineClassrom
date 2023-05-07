@@ -28,12 +28,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('predmeti', PredmetController::class)->only(['index', 'show']);
-Route::resource('lekcije', LekcijaController::class)->only(['index', 'show']);
+Route::resource('lekcije', LekcijaController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
+Route::resource('lekcija', LekcijaController::class)->only(['destroy']);
 Route::resource('predmet/{id}/lekcije', LekcijaPredmetController::class)->only(['index']);
-Route::resource('lekcija/{id}/predmet', PredmetLekcijaController::class)->only(['index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
-Route::resource('casovi', CasController::class)->only(['index', 'show', 'store', 'destroy']);
 Route::resource('users', UserController::class)->only(['index', 'show', 'update']);
-Route::resource('users/{id}/cas', LekcijaCasUserController::class)->only(['index']);

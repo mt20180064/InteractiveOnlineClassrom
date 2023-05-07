@@ -15,7 +15,7 @@ class LekcijaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'lekcijaId' => $this->resource->id,
+            'id' => $this->resource->id,
             'naziv' => $this->resource->naziv,
             'tezina' => $this->resource->tezina,
             'trajanje' => $this->resource->trajanje,
