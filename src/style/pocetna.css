@@ -14,3 +14,65 @@
     border-color: white;
     
   }
+  .pretraga{
+    height:40px;
+    width:250px;
+    margin-left:20px;
+  }
+.footer{
+  display:flex;
+   flex-direction:column;
+   min-height: 10vh;
+    margin-top:auto;
+    background: rgb(10, 6, 6);
+     text-align:center;
+     font:white;
+}
+
+.opredmetu{
+  text-align:justify;
+  font-family: fantasy;
+  font-style: italic;
+  font: rgb(56, 1, 1);
+}
+
+.link{
+font-style: normal;
+font-weight: 300;
+font:black;
+
+}
+
+.dug{
+  border:rgb(63, 1, 1);
+  color: brown;
+}
+
+.form-label{
+  color: rgb(78, 2, 2);
+  font-weight: bold;
+  display: block;
+  width: 200px;
+  float: left;
+}
+
+.form-control{
+  color: rgb(78, 2, 2);
+  font-weight: bold;
+  display: block;
+  width: 400px;
+  float: left;
+ 
+}
+
+.row g-3{
+  margin: top 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.col-md-6{
+  margin: top 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}

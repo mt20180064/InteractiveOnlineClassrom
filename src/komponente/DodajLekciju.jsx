@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Dugme from './Dugme';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
-
+import "../style/pocetna.css";
 const DodajLekciju = ({predmeti }) => {
 
 let navigate = useNavigate();
@@ -66,6 +66,10 @@ data.append('imageUrl', novaLekcija.imageUrl);
 
     return (
         <>
+        <br>
+        </br>
+        <br>
+        </br>
     <form className="row g-3">
     <div className="col-md-6">
         <label htmlFor="inputName" className="form-label">Naslov</label>
@@ -95,6 +99,50 @@ data.append('imageUrl', novaLekcija.imageUrl);
 </form>
 
 <Dugme handle={handleUpdate} btnName="Sacuvaj"/>
+<br>
+</br>
+<table className="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Predmet</th>
+      <th scope="col">Najčitanija lekcija</th>
+      <th scope="col">Ukupno korisnika čitalo</th>
+      <th scope="col">Prosečna težina čitanih</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Geografija</td>
+      <td>Kretanje tektonskih ploča</td>
+      <td>465473</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Istorija</td>
+      <td>Prvi svetski rat</td>
+      <td>659085</td>
+      <td>3.3</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Biologija</td>
+      <td>Razmnožavanje kod golosemenica</td>
+      <td>357697</td>
+      <td>2.9</td>
+    </tr>
+  </tbody>
+</table>
+<footer className="footer">
+
+  <div class="text-center p-3" >
+    © 2022 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">easyonlinelearning.com</a>
+  </div>
+  
+</footer>
 </>
     )
         }

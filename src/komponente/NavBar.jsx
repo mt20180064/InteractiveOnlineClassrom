@@ -2,10 +2,34 @@ import React, { useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import Link from 'react-router-dom';
 import {Outlet} from 'react-router-dom';
+import axios from 'axios';
 
 
-const NavBar = ({  }) => {
-   
+const NavBar = ({ }) => {
+  function handleLogout(){
+
+    var config = {
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/logout',
+        headers: { 
+        
+        Authorization: "Bearer "+ window.sessionStorage.getItem("auth_token"),
+        
+        },
+        
+    };
+    
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        window.sessionStorage.setItem("auth_token",null);
+        
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+  
+  }
     return (
         <div>
 <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
@@ -19,17 +43,15 @@ const NavBar = ({  }) => {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/pocetna">početna</a>
         </li>
+      
         <li className="nav-item">
-          <a className="nav-link" href="/cas">čas</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#" >profil</a>
+          <a className="nav-link" href="/blog" >blog</a>
         </li>
         {window.sessionStorage.getItem("auth_token")==null ? 
         <li className="nav-item">
           <a className="nav-link" href="/login">login</a>
         </li> : <li className="nav-item">
-          <a className="nav-link" href="/login" >logout</a>
+          <a className="nav-link" onClick={handleLogout}  href="/login"  >logout</a>
         </li>
         }
       </ul>

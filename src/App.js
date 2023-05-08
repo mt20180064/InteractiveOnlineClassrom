@@ -13,50 +13,12 @@ import PretragaPoPredmetu from './komponente/PretragaPoPredmetu';
 import Cas from './komponente/Cas';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import Blog from './komponente/Blog';
 
 
 
 function App() {
   
-    const [token,setToken]=useState();
-
-    function addToken(auth_token){
-        setToken(auth_token);
-    }
-
-    function removeToken(){
-        setToken(null);
-        setCurrentUser(null);
-        setCurrentUserData(null);
-    }
-
-    const [users, setUsers]=useState();
-    useEffect(()=>{
-        if(users==null){
-            axios.get("http://127.0.0.1:8000/api/users").then((res)=>{
-                console.log(res.data);
-                setUsers(res.data.users);
-            });
-        }
-    },[users]);
-
-    const [userData, setUserData] = useState();
-    useEffect(()=>{
-        if(userData==null){
-            axios.get("http://127.0.0.1:8000/api/data").then((res)=>{
-                console.log(res.data);
-                setUserData(res.data.userData);
-            });
-        }
-    },[userData]);
-
-    //logged user data
-    const [currentUserData, setCurrentUserData] = useState();
-
-    
-    //logged user
-    const [currentUser, setCurrentUser] = useState();
-
   const [predmeti, setPredmeti]=useState();
   useEffect(()=>{
       if(predmeti==null){
@@ -128,13 +90,13 @@ function App() {
       <Routes>
       <Route path="/login" element = {<LoginPage/>}/>;
       <Route path="/register" element = {<RegisterPage/>}/>;
-      <Route path="/" element = {<NavBar/>}>;
+      <Route path="/" element = {<NavBar />}>;
       <Route path="pocetna" element = {<Pocetna vidiDetalje={vidiDetalje} obrisi = {obrisi} vidiPredmete={vidiPredmete}/>}/>;
-      <Route path="cas" element = {<Cas/>}/>;
+      <Route path="/blog" element = {<Blog/>}/>;
       <Route path="/dodajLekciju" element = {<DodajLekciju predmeti={predmeti}/>}/>;
       <Route path="/izmeniLekciju" element = {<IzmeniLekciju predmeti={predmeti} lekcijaa={lekcijaDetails}/>}/>;
       <Route path="/lekcijaCela" element = {<LekcijaCela predmeti={predmeti} l={lekcijaDetails}/>}/>;
-      <Route path="/pretragaPoPredmetu" element = {<PretragaPoPredmetu predmetLekcije={predmetLekcije}/>}/>;
+      <Route path="/pretragaPoPredmetu" element = {<PretragaPoPredmetu predmetLekcije={predmetLekcije} lekcijaDetalji={lekcijaDetails}/>}/>;
       </Route>
       </Routes>
     

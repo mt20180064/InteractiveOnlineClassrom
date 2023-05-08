@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import "../style/pocetna.css";
 import { Link } from 'react-router-dom';
 import PretragaPoPredmetu from './PretragaPoPredmetu'
+
  {/*const Pocetna = () => {
     const[lekcije, setLekcije] = useState();
     useEffect(() => {
@@ -119,7 +120,15 @@ export default Pocetna; */}
                 
                 
             </div>
-    
+            <footer class="bg-dark text-center text-white">
+  
+  
+            <div class="text-center p-3">
+              © 2022 Copyright:
+              <a class="text-white" href="https://mdbootstrap.com/">easyonlinelearning.com</a>
+            </div>
+            
+          </footer>
     </div>
     )
 }

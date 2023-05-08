@@ -1,6 +1,11 @@
 import {useNavigate} from 'react-router-dom';
-const JednaLekcija = ({lekcija})=>{
+import { Link } from 'react-router-dom';
+import "../style/pocetna.css";
+import "../style/JednaLekcija.css";
+const JednaLekcija = ({lekcija, vidiDetalje, obrisi})=>{
   let navigate = useNavigate();
+  //()=> vidiDetalje(lekcija.id);
+
 
     return(
      <div className="card">
@@ -11,8 +16,11 @@ const JednaLekcija = ({lekcija})=>{
       <h5 className="card-title">{lekcija.naziv}</h5>
       <img className='slika' src={lekcija.imageUrl} alt="Lekcija"/>
       <p className="card-text">Trajanje: {lekcija.trajanje} minuta</p>
-      {window.sessionStorage.getItem("auth_token")==null ? <a href="#"className="btn btn-primary">Pocni sa ucenjem</a> :
-      <a href="#"className="btn btn-primary">Izmeni</a>
+      {window.sessionStorage.getItem("auth_token")==null ? <button className="btn btn-primary mb-1"><Link to="/lekcijaCela" className='link' onClick={() => vidiDetalje(lekcija.id)}>Počni sa učenjem</Link></button> :
+       <Link to="/izmeniLekciju" className='link' onClick={() => vidiDetalje(lekcija.id)}>Izmeni</Link>
+    }
+    { window.sessionStorage.getItem("auth_token")!=null ?  <Link to="/pocetna" className='link' onClick={()=>obrisi(lekcija.id)}>Obrisi</Link> : <></>
+
     }
     </div>
     <div className="card-footer text-muted">
@@ -25,6 +33,7 @@ const JednaLekcija = ({lekcija})=>{
     </div>
     
  </div>
+ 
     );
 };
 export default JednaLekcija;
